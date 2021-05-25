@@ -32,8 +32,6 @@ Known Bugs and Limitations
 
 * Missing Features
 
-  * Menu sub-items are not supported in TOC (every source document starts a new chapter).
-
   []
 
 * Implementation Specific Issues
