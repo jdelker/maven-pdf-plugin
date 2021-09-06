@@ -24,7 +24,7 @@ under the License.
   
     <groupId>com.github.spyhunter99</groupId>
     <artifactId>maven-pdf-plugin</artifactId>
-    <version>1.5.0.8-SNAPSHOT</version>
+    <version>1.5.0.9-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>Apache Maven PDF Plugin Fork</name>
@@ -98,8 +98,8 @@ under the License.
     </distributionManagement>
 
     <properties>
-        <doxiaVersion>1.8</doxiaVersion>
-        <doxiaSitetoolsVersion>1.7.4</doxiaSitetoolsVersion>
+        <doxiaVersion>1.10</doxiaVersion>
+        <doxiaSitetoolsVersion>1.9.2</doxiaSitetoolsVersion>
         <mavenVersion>2.2.1</mavenVersion>
         <timestamp>${maven.build.timestamp}</timestamp>
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
@@ -194,7 +194,7 @@ under the License.
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-core</artifactId>
-            <version>1.7</version>
+            <version>1.9.1</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.codehaus.plexus</groupId>
@@ -208,7 +208,7 @@ under the License.
         <dependency>
             <groupId>org.apache.maven.doxia</groupId>
             <artifactId>doxia-integration-tools</artifactId>
-            <version>1.7.4</version>
+            <version>1.9.2</version>
         </dependency>
   
         <dependency>
@@ -243,7 +243,7 @@ under the License.
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.5</version>
+            <version>2.7</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.plexus</groupId>
@@ -270,7 +270,7 @@ under the License.
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -295,7 +295,7 @@ under the License.
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2.1</version>
+            <version>3.2.2</version>
             <!-- runtime dependency for commons-configuration -->
             <scope>runtime</scope>
         </dependency>
@@ -307,7 +307,7 @@ under the License.
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.12</version>
+            <version>1.2.17</version>
             <!-- runtime dep for fop -->
             <scope>runtime</scope>
         </dependency>
@@ -434,6 +434,11 @@ under the License.
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>3.3</version>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
@@ -681,6 +686,25 @@ under the License.
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <configuration>
+                            <doclint>none</doclint>
+                            <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+                            <docletArtifact>
+                                <groupId>org.umlgraph</groupId>
+                                <artifactId>umlgraph</artifactId>
+                                <version>5.6.6</version>
+
+                            </docletArtifact>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>javadoc</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                     </plugin>
                     <!-- We want to sign the artifact, the POM, and all attached artifacts -->
                     <plugin>
